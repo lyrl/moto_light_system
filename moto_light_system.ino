@@ -45,9 +45,9 @@
  * addition     5
  */
 #define HORN_I      2
-#define PASS        3
+#define PASS        5
 #define HIGH_BEAM   4
-#define ADDITION       5
+#define ADDITION       3
 
 
 

@@ -25,7 +25,7 @@ void Horn::off()
 
 void Horn::toggle()
 {
-  digitalWrite(m_pin, m_state == true ? DEFAULT_BRIGHTNESS : MAX_BRIGHTNESS);
+  digitalWrite(m_pin, m_state ? HIGH : LOW);
   m_state = !m_state;
 }
 

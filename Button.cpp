@@ -61,6 +61,9 @@ bool Button::onChange(unsigned long currentTime)
       m_stat = reading;
       return true;
     }
+
+    if (m_stat == LOW)
+      return true;
   }
 
   m_lastButtonState = reading;

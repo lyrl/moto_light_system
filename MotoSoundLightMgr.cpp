@@ -43,7 +43,6 @@ void MotoSoundLightMgr::pollStat(unsigned long currentTime) {
       m_horn_stat = true;
     } else {
       m_horn_stat = false;
-      //m_led->off();
     }
   }
 
@@ -89,18 +88,28 @@ void MotoSoundLightMgr::update() {
  * 空闲状态下的射灯控制 优先级低
  */
 void MotoSoundLightMgr::idleContrl(unsigned long currentTime) {
+  if (m_horn_blink_count <= 0 &&!m_horn_stat) 
+    m_horn->off();                                                                                                             
+  
   // 闪烁记数为空、远光灯为关闭状态
   if (m_led_blink_count <= 0 && !m_high_beam_stat) {
-    if (currentTime - m_led_last_fade_time > FADE_DELAY) {
-      m_led->on(m_fade_brightness);
+     // 默认10%亮度
+     m_led->off();
 
-      m_fade_brightness+=FADE_STEP;
-
-      if (m_fade_brightness <= 0 || m_fade_brightness >= 100) {
-        m_fade_brightness-=FADE_STEP;
-      }
-      // m_led->set
-    }
+     // 默认呼吸灯
+     
+//    if ((currentTime - m_led_last_fade_time) > FADE_DELAY) {
+//      m_led->on(m_fade_brightness);
+//
+//      m_fade_brightness =  m_fade_brightness + m_fade_step;
+//
+//      if (m_fade_brightness <= 0 || m_fade_brightness >= 10) {
+//        m_fade_step = -m_fade_step;
+//      }
+//      
+//      // m_led->set
+//      m_led_last_fade_time = currentTime;
+//    }
   }
 }
 
@@ -112,8 +121,6 @@ void MotoSoundLightMgr::hihgBeamContrl() {
     // 远光灯开启
     if (m_high_beam_stat)
       m_led->on();
-    else // 远光灯关闭
-      m_led->off();
    }
 }
 

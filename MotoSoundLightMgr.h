@@ -1,8 +1,8 @@
 #ifndef _MOTO_SOUND_LIGHT_MGR_H_
 #define _MOTO_SOUND_LIGHT_MGR_H_
 
-#define FADE_DELAY 30 // 30秒变更间隔
-#define FADE_STEP 5 // 步进5
+#define FADE_DELAY 80 // 80毫秒变更间隔
+#define FADE_STEP 1 // 步进5
 
 #include "Horn.h"
 #include "LED.h"
@@ -63,6 +63,7 @@ private:
 
   unsigned long m_led_last_fade_time = 0;
   int m_fade_brightness = 0;
+  int m_fade_step = FADE_STEP;
 
 };
 
