@@ -63,7 +63,7 @@ void MotoSoundLightMgr::pollStat(unsigned long currentTime) {
   // 远光灯按钮
   if(m_highBeamButton->onChange(currentTime)) {
     Serial.println("high beam button press!");
-    Serial.println(m_passButton->getStat() == LOW ? "on" : "off");
+    Serial.println(m_highBeamButton->getStat() == LOW ? "on" : "off");
 
     if (m_highBeamButton->getStat() == LOW) {
       m_high_beam_stat = true;
